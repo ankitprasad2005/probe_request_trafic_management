@@ -15,11 +15,11 @@ def get_traffic_light_color(traffic_data):
     sorted_roads = sorted(traffic_data.items(), key=lambda x: x[1]['number_of_cars'])
     for i, (road, data) in enumerate(sorted_roads):
         if i < 2:
-            traffic_data[road]['light_color'] = 'green'
+            traffic_data[road]['light_color'] = 'red'
         elif i < 3:
             traffic_data[road]['light_color'] = 'yellow'
         else:
-            traffic_data[road]['light_color'] = 'red'
+            traffic_data[road]['light_color'] = 'green'
     return traffic_data
 
 # Streamlit app
@@ -56,5 +56,5 @@ while True:
             st.write("---")
 
     # Wait for a short period before refreshing
-    time.sleep(2)
+    time.sleep(4)
     st.experimental_set_query_params()

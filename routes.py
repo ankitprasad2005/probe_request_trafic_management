@@ -87,7 +87,7 @@ def get_random_integer():
 def north():
     start = request.args.get('start', default=10, type=int)
     end = request.args.get('end', default=50, type=int)
-    step = request.args.get('step', default=3, type=int)
+    step = request.args.get('step', default=4, type=int)
     
     if 'last_value' not in get_random_integer.__dict__:
         get_random_integer.last_value = random.randint(start, end)
@@ -107,7 +107,7 @@ def north():
 def south():
     start = request.args.get('start', default=10, type=int)
     end = request.args.get('end', default=50, type=int)
-    step = request.args.get('step', default=3, type=int)
+    step = request.args.get('step', default=4, type=int)
     
     if 'last_value' not in get_random_integer.__dict__:
         get_random_integer.last_value = random.randint(start, end)
