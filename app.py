@@ -11,14 +11,16 @@ def get_number_of_cars(road):
         return 0
 
 # Function to determine traffic light color based on the total number of cars
-def get_traffic_light_color(total_cars):
-    avg_cars = total_cars / 4  # Average number of cars across all roads
-    if avg_cars < 10:
-        return 'green'
-    elif avg_cars < 20:
-        return 'yellow'
-    else:
-        return 'red'
+def get_traffic_light_color(traffic_data):
+    sorted_roads = sorted(traffic_data.items(), key=lambda x: x[1]['number_of_cars'])
+    for i, (road, data) in enumerate(sorted_roads):
+        if i < 2:
+            traffic_data[road]['light_color'] = 'green'
+        elif i < 3:
+            traffic_data[road]['light_color'] = 'yellow'
+        else:
+            traffic_data[road]['light_color'] = 'red'
+    return traffic_data
 
 # Streamlit app
 st.title('Traffic Light Control System')
@@ -29,20 +31,15 @@ roads = ['north', 'south', 'east', 'west']
 traffic_data_placeholder = st.empty()
 
 def refresh_traffic_data():
-    total_cars = 0
     traffic_data = {}
 
     for road in roads:
         number_of_cars = get_number_of_cars(road)
-        total_cars += number_of_cars
         traffic_data[road] = {
             'number_of_cars': number_of_cars,
         }
 
-    light_color = get_traffic_light_color(total_cars)
-
-    for road in traffic_data:
-        traffic_data[road]['light_color'] = light_color
+    traffic_data = get_traffic_light_color(traffic_data)
 
     return traffic_data
 

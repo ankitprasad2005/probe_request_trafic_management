@@ -7,7 +7,7 @@ import random
 
 app = Flask(__name__)
 
-st, nd, stp = 5, 30, 3
+# st, nd, stp = 5, 30, 3
 
 # Initialize serial port (update with your port and baud rate)
 ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=2)
@@ -85,9 +85,9 @@ def get_random_integer():
 
 @app.route('/north', methods=['GET'])
 def north():
-    start = request.args.get('start', default=st, type=int)
-    end = request.args.get('end', default=nd, type=int)
-    step = request.args.get('step', default=stp, type=int)
+    start = request.args.get('start', default=10, type=int)
+    end = request.args.get('end', default=50, type=int)
+    step = request.args.get('step', default=3, type=int)
     
     if 'last_value' not in get_random_integer.__dict__:
         get_random_integer.last_value = random.randint(start, end)
@@ -105,9 +105,9 @@ def north():
 
 @app.route('/south', methods=['GET'])
 def south():
-    start = request.args.get('start', default=st, type=int)
-    end = request.args.get('end', default=nd, type=int)
-    step = request.args.get('step', default=stp, type=int)
+    start = request.args.get('start', default=10, type=int)
+    end = request.args.get('end', default=50, type=int)
+    step = request.args.get('step', default=3, type=int)
     
     if 'last_value' not in get_random_integer.__dict__:
         get_random_integer.last_value = random.randint(start, end)
@@ -125,9 +125,9 @@ def south():
 
 @app.route('/east', methods=['GET'])
 def east():
-    start = request.args.get('start', default=st, type=int)
-    end = request.args.get('end', default=nd, type=int)
-    step = request.args.get('step', default=stp, type=int)
+    start = request.args.get('start', default=30, type=int)
+    end = request.args.get('end', default=70, type=int)
+    step = request.args.get('step', default=3, type=int)
     
     if 'last_value' not in get_random_integer.__dict__:
         get_random_integer.last_value = random.randint(start, end)
@@ -145,9 +145,9 @@ def east():
 
 @app.route('/west', methods=['GET'])
 def west():
-    start = request.args.get('start', default=st, type=int)
-    end = request.args.get('end', default=nd, type=int)
-    step = request.args.get('step', default=stp, type=int)
+    start = request.args.get('start', default=30, type=int)
+    end = request.args.get('end', default=70, type=int)
+    step = request.args.get('step', default=3, type=int)
     
     if 'last_value' not in get_random_integer.__dict__:
         get_random_integer.last_value = random.randint(start, end)
