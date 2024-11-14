@@ -46,15 +46,52 @@ def refresh_traffic_data():
 while True:
     traffic_data = refresh_traffic_data()
     
-    # Display the traffic lights
+    # Display the traffic lights in a plus form
     with traffic_data_placeholder.container():
-        for road, data in traffic_data.items():
-            st.write(f"Road: {road.capitalize()}")
-            st.write(f"Number of Cars: {data['number_of_cars']}")
-            st.write(f"Traffic Light: {data['light_color'].capitalize()}")
-            st.markdown(f"<div style='width: 50px; height: 50px; background-color: {data['light_color']};'></div>", unsafe_allow_html=True)
-            st.write("---")
-
+        col1, col2, col3 = st.columns([1, 1, 1])
+        
+        with col1:
+            st.write("")
+        
+        with col2:
+            st.write(f"Road: North")
+            st.write(f"Number of Cars: {traffic_data['north']['number_of_cars']}")
+            st.write(f"Traffic Light: {traffic_data['north']['light_color'].capitalize()}")
+            st.markdown(f"<div style='width: 50px; height: 50px; background-color: {traffic_data['north']['light_color']};'></div>", unsafe_allow_html=True)
+        
+        with col3:
+            st.write("")
+        
+        col1, col2, col3 = st.columns([1, 1, 1])
+        
+        with col1:
+            st.write(f"Road: West")
+            st.write(f"Number of Cars: {traffic_data['west']['number_of_cars']}")
+            st.write(f"Traffic Light: {traffic_data['west']['light_color'].capitalize()}")
+            st.markdown(f"<div style='width: 50px; height: 50px; background-color: {traffic_data['west']['light_color']};'></div>", unsafe_allow_html=True)
+        
+        with col2:
+            st.write("")
+        
+        with col3:
+            st.write(f"Road: East")
+            st.write(f"Number of Cars: {traffic_data['east']['number_of_cars']}")
+            st.write(f"Traffic Light: {traffic_data['east']['light_color'].capitalize()}")
+            st.markdown(f"<div style='width: 50px; height: 50px; background-color: {traffic_data['east']['light_color']};'></div>", unsafe_allow_html=True)
+        
+        col1, col2, col3 = st.columns([1, 1, 1])
+        
+        with col1:
+            st.write("")
+        
+        with col2:
+            st.write(f"Road: South")
+            st.write(f"Number of Cars: {traffic_data['south']['number_of_cars']}")
+            st.write(f"Traffic Light: {traffic_data['south']['light_color'].capitalize()}")
+            st.markdown(f"<div style='width: 50px; height: 50px; background-color: {traffic_data['south']['light_color']};'></div>", unsafe_allow_html=True)
+        
+        with col3:
+            st.write("")
+        
     # Wait for a short period before refreshing
     time.sleep(4)
-    st.experimental_set_query_params()

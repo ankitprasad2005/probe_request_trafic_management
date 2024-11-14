@@ -21,8 +21,13 @@ To run frountend:
 streamlit run app.py
 ```
 
+
 ## About
 The ESP32 spits out serially the MAC address its RSSI (reversed signal strength indicator).
 
 The ```routes.py``` creates api endpoints: ```/north /south /east /west```.
 The code reades serial out from the ESP32 gets the count of unique MAC addresses in 60 sec.
+It gives all the 4 trafic data in ```{trafic: <int>}``` json.
+
+The ```app.py``` is frountend simulating a frountend using streamlit.
+
